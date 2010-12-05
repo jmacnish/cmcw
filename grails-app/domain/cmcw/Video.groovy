@@ -17,4 +17,14 @@ class Video {
     availableUntil(nullable:true)
     boxArtLargeUrl(url:true, nullable:true)
   }
+
+  def getRealURL(){
+    // for all the urls
+    def firstUrl = (netflixId =~ /api/).replaceFirst("www");
+
+    // for movies
+    def realUrl = (firstUrl =~ /catalog\/titles\/movies/).replaceFirst("Movie/show");
+
+    return realUrl;
+  }
 }

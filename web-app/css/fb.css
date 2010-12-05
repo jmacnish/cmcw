@@ -145,3 +145,34 @@ button.link:hover span,
 button.link:focus span {
     color: black;
 }
+
+div#row_container {
+  width: 800px;      // <-- images will be evenly distributed across
+                     //     this width
+  margin: auto;
+  background-repeat: no-repeat;
+}
+
+div#image_container {
+  width: 25%;
+}
+
+.site_img_sz {
+    width: 120px;
+    height: 150px;
+    background-repeat: no-repeat;
+}
+
+.pos-left {
+    margin-left: 0%;
+}
+
+.pos-middle {
+    margin-left: 25%;
+    margin-top: -100px;
+}
+
+.pos-right {
+    margin-left: 50%;
+    margin-top: -100px;
+}

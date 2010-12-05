@@ -115,7 +115,7 @@
 
 <div class="fbbody">
 
-  <div class="fbgreybox" style="width: 500px;">
+  <div class="fbgreybox" style="width: 800px;">
     Can't Miss, Can't Watch
   </div>
 
@@ -134,9 +134,9 @@
 
     <g:each in="${days}" var="d">
 
-      <div class="container">
-
-        <div class="fbbluebox" style="width: 500px;">
+      <!--<div class="container"> -->
+      <div id="row_container">
+        <div class="fbbluebox" style="width: 800px;">
           <g:formatDate format="EEEE, MMMM dd" date="${d}"/>
         </div>
 
@@ -146,19 +146,20 @@
 
         <g:each in="${videosByDay[d]}" var="v">
           <div class="float">
-            <img src="${v.boxArtLargeUrl}" width="110" height="150"/><br />
-            <p>${v.title}</p>
+            <div id="image_container" class="site_img_sz pos-left">
+              <a  href="${v.getRealURL()}" title=${v.title} >
+                <div id=${v.title}  class="site_img_sz"><img src="${v.boxArtLargeUrl}" width="110" height="150"/></div>
+              </a>
+            </div id="image_container">
             <button type="submit" class="link" category="selection"><span>watch</span></button>
             <button type="submit" class="link" category="selection"><span>miss</span></button>
-          </div>
+        </div>
         </g:each>
 
         <div class="spacer">
           &nbsp;
         </div>
-
-      </div>
-
+      </div id="row_container">
     </g:each>
 
     <button id="post" type="submit" class="link"><span>Post to my wall</span></button>
