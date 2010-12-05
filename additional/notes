@@ -1,0 +1,5 @@
+1) HTTP-HEAD not supported on big catalog?  Easier to cache the catalog if can HTTP-head it?
+   Trying an HTTP GET without fetching body is still slow & blocking.
+
+2) API doesn't really document date format (it's seconds from epoch)
+
