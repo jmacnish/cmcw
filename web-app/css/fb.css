@@ -94,6 +94,8 @@
 }
 
 div.float {
+    width: 120px;
+    height: 210px;
     float: left;
 }
 
