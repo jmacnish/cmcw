@@ -57,10 +57,10 @@
       var allMissed = allSelectedButtons.filter('button:contains("miss")');
       var maxWatch = 2;
       if (allWatched.length > 0) {
-        usePicture = allWatched.parent().find('img').first().attr("src");
-        usePictureText = allWatched.parent().find('p').first().text();
+        usePicture = allWatched.parent().prev().find('img').first().attr("src");
+        usePictureText = allWatched.parent().find('B').first().text();
         body += "Can't miss: ";
-        allWatched.parent().find('p').each(function(index) {
+        allWatched.parent().find('B').each(function(index) {
           body += $(this).text();
           if (index < allWatched.length - 1) {
             body += ", ";
@@ -72,13 +72,14 @@
           body += "\n\n";
         }
         body += "Can't watch: ";
-        allMissed.parent().find('p').each(function(index) {
+        allMissed.parent().find('B').each(function(index) {
           body += $(this).text();
           if (index < allMissed.length - 1) {
             body += ", ";
           }
         });
       }
+      //alert("return val: "+body);
       if (enableFB) {
         FB.login(function(response) {
           if (response.session) {
@@ -147,12 +148,14 @@
         <g:each in="${videosByDay[d]}" var="v">
           <div class="float">
             <div id="image_container" class="site_img_sz pos-left">
-              <a  href="${v.getRealURL()}" title=${v.title} >
-                <div id=${v.title}  class="site_img_sz"><img src="${v.boxArtLargeUrl}" width="110" height="150"/></div>
+              <a  href="${v.getRealURL()}" title="${v.title}" >
+                <div class="site_img_sz"><img src="${v.boxArtLargeUrl}" width="110" height="150"/></div>
               </a>
             </div id="image_container">
+            <p><B>${v.title}</B></br>
             <button type="submit" class="link" category="selection"><span>watch</span></button>
             <button type="submit" class="link" category="selection"><span>miss</span></button>
+            </p>
         </div>
         </g:each>
 
