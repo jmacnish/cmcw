@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cmcw.iml" filepath="$PROJECT_DIR$/cmcw.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cmcw-grailsPlugins.iml" filepath="$PROJECT_DIR$/cmcw-grailsPlugins.iml" />
+    </modules>
+  </component>
+</project>
+
