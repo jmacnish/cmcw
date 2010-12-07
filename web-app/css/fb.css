@@ -149,7 +149,7 @@ button.link:focus span {
 }
 
 div#row_container {
-  width: 800px;      // <-- images will be evenly distributed across
+  width: 700px;      // <-- images will be evenly distributed across
                      //     this width
   margin: auto;
   background-repeat: no-repeat;

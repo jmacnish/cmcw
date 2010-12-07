@@ -3,10 +3,9 @@ package cmcw
 import grails.converters.XML
 import grails.converters.deep.JSON
 
-class Format {
-    String contentType
-}
-
+/**
+ * Provides the search API itself.
+ */
 class CatalogController {
 
     def catalogService
@@ -19,6 +18,10 @@ class CatalogController {
                 if (availableAfter) {
                     ge("availableFrom", availableAfter)
                 }
+                def availableUpto = isDate(params, 'availableUpto')
+                if (availableUpto) {
+                    lt("availableFrom", availableUpto)
+                }
                 def videoType = isParam(params, 'videoType')
                 if (videoType) {
                     like("netflixId", '%' + videoType + '%')
@@ -26,7 +29,7 @@ class CatalogController {
             }
             firstResult(isInteger(params, 'start', 0))
             maxResults(isInteger(params, 'count', 10))
-            order("availableFrom")
+            order("availableFrom", "desc")
         }
 
         // Add boxshots or anything else we want to have for a "full" video

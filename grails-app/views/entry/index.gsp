@@ -18,6 +18,7 @@
     xfbml       : true,  // parse XFBML
     channelUrl  : 'http://ideaforge.dlinkddns.com/cmcw/channel.html'  // custom channel
   });
+  FB.Canvas.setAutoResize(100);
   FB.getLoginStatus(function(response) {
     if (response.session) {
       $("#logged-in-status").html(
@@ -114,12 +115,12 @@
 
 <div class="fbbody">
 
-  <div class="fbgreybox" style="width: 800px;">
+  <div class="fbgreybox" style="width: 700px;">
     Can't Miss, Can't Watch
   </div>
 
   <p>
-  <h4>Videos for this week:</h4>
+  <h4>New movies to watch from <g:formatDate format="EEEE, MMMM d" date="${startOfPeriod}"/> to <g:formatDate format="EEEE, MMMM d" date="${endOfPeriod}"/></h4>
 </p>
 
   <form id="submission" action="#" method="get">
@@ -127,8 +128,8 @@
     <g:each in="${days}" var="d">
 
       <div id="row_container">
-        <div class="fbbluebox" style="width: 800px;">
-          <g:formatDate format="EEEE, MMMM dd" date="${d}"/>
+        <div class="fbbluebox" style="width: 700px;">
+          <g:formatDate format="EEEE, MMMM d" date="${d}"/>
         </div>
 
         <div class="spacer">

@@ -9,7 +9,7 @@ import org.xml.sax.InputSource
  */
 class CatalogService {
 
-    static transactional = true
+    static transactional = false
     def netflixService
     def shadowService
     def dataSource

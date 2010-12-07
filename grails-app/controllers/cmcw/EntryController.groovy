@@ -3,19 +3,29 @@ package cmcw
 import grails.converters.JSON
 import org.springframework.web.client.RestTemplate
 
+/**
+ * Handles the Facebook app "Can't Miss Can't Watch" page.
+ */
 class EntryController {
 
     def catalogService
 
     def index = {
-        def startOfPeriod = getWeeksAdjust(new Date(), -2)
+        // Get movies from 4 days ago until 2 days from now.
+        def startOfPeriod = getStartOfAdjustedDay(new Date(), -4)
+        def endOfPeriod = getStartOfAdjustedDay(new Date(), 2)
 
         /*
-         * Call the search API to get list of videos back
-         */
-        def uri = "http://localhost:8080/cmcw/catalog/search?availableAfter={availableAfter}&videoType={videoType}&format=json"
+        * Call the search API to get list of videos back
+        */
+        def serverURL = grailsApplication.config.grails.serverURL // API URL
+        def uri = serverURL + "/catalog/search?availableAfter={availableAfter}&availableUpto={availableUpto}&videoType={videoType}&count=50&format=json"
         def restTemplate = new RestTemplate()
-        def vars = ['availableAfter': Long.toString(dateToEpoch(startOfPeriod)), 'videoType': 'movies']
+        def vars = [
+                'availableAfter': Long.toString(dateToEpoch(startOfPeriod)),
+                'availableUpto': Long.toString(dateToEpoch(endOfPeriod)),
+                'videoType': 'movies'
+        ]
         def result = restTemplate.getForObject(uri, String.class, vars)
         def videosMaps = JSON.parse(result)
         def videos = []
@@ -46,7 +56,7 @@ class EntryController {
             videosByDay[day] += it
         }
 
-        [params: params, videos: videos, startOfPeriod: startOfPeriod, days: days, videosByDay: videosByDay]
+        [params: params, videos: videos, startOfPeriod: startOfPeriod, endOfPeriod: endOfPeriod, days: days, videosByDay: videosByDay]
     }
 
     /*
@@ -85,13 +95,23 @@ class EntryController {
     }
 
     def static getStartOfPreviousDay(Date d) {
+        return getStartOfAdjustedDay(d, -1)
+    }
+
+    /**
+     * Skips to start of a previous or next day
+     * @param date The current date to adjust
+     * @param adjust The number of days to adjust backward (negative) or forward (positive)
+     * @return The start of the adjusted day
+     */
+    def static getStartOfAdjustedDay(Date date, int adjust) {
         GregorianCalendar c = new GregorianCalendar();
-        c.setTime(d);
+        c.setTime(date);
         c.set(Calendar.HOUR_OF_DAY, 0)
         c.set(Calendar.MINUTE, 0)
         c.set(Calendar.SECOND, 0)
         c.set(Calendar.MILLISECOND, 0)
-        c.add(Calendar.DAY_OF_WEEK, -1)
+        c.add(Calendar.DAY_OF_WEEK, adjust)
         return c.getTime()
     }
 

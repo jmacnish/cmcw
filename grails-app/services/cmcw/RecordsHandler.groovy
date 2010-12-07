@@ -5,7 +5,8 @@ import org.xml.sax.Attributes
 import org.xml.sax.helpers.DefaultHandler
 
 /**
- * Our SAX parser for parsing the Netflix index XML.
+ * Our SAX parser for parsing the Netflix index XML.  We need SAX because we can't parse
+ * 340+ MB xml files.
  */
 class RecordsHandler extends DefaultHandler {
     static log = Logger.getLogger(RecordsHandler.class)
@@ -87,15 +88,6 @@ class RecordsHandler extends DefaultHandler {
                         // Do not update or change netflixId
                         video.availableFrom = currentAvailableFrom
                         video.availableUntil = currentAvailableUntil
-                    }
-                    def persistVideo = false
-                    if (persistVideo) {
-                        video.save()
-                        if (video.hasErrors()) {
-                            log.error("Cannot save video=" + video.errors)
-                        } else {
-                            log.info("Saved video=" + video.title)
-                        }
                     }
                     video.generateHash()
                     videoQueue += video

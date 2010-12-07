@@ -15,18 +15,18 @@ class Video {
 
     static constraints = {
         title(blank: false)
-        netflixId(blank: false, unique:true)
-        availableFrom(nullable:true)
-        availableUntil(nullable:true)
-        boxArtLargeUrl(url:true, nullable:true)
-        contentHash(maxSize: 40, nullable:true)
+        netflixId(blank: false, unique: true)
+        availableFrom(nullable: true)
+        availableUntil(nullable: true)
+        boxArtLargeUrl(url: true, nullable: true)
+        contentHash(maxSize: 40, nullable: true)
     }
 
     static mapping = {
-        contentHash index:'ContentHash_Idx'
+        contentHash index: 'ContentHash_Idx'
     }
 
-    def getRealURL(){
+    def getRealURL() {
         // for all the urls
         def firstUrl = (netflixId =~ /api/).replaceFirst("www");
 

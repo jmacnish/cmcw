@@ -1,5 +1,8 @@
 package cmcw
 
+/**
+ * A record of our full fetches from netflix
+ */
 class CatalogImport {
 
     String file
@@ -8,7 +11,7 @@ class CatalogImport {
     Date lastUpdated
 
     static constraints = {
-        file blank:false, unique: true
-        etag blank:false, unique: true
+        file blank: false, unique: true
+        etag blank: false, unique: true
     }
 }

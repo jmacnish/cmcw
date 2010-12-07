@@ -14,6 +14,9 @@ import org.apache.http.params.HttpParams
 import org.apache.http.util.EntityUtils
 import org.apache.log4j.Logger
 
+/**
+ * Fetches stuff over HTTP through a variety of methods.
+ */
 class HttpClientService {
 
     static transactional = true

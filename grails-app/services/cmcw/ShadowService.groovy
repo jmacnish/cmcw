@@ -39,6 +39,7 @@ class ShadowService {
 
     def index() {
         def sql = new Sql(dataSource)
+        // We get duplicate netflixIds from the catalog -- that seems bad.  De-dupe at this import step
         sql.execute('''create table video_shadow_cooked AS SELECT DISTINCT * FROM video_shadow''')
         sql.execute('''drop table video_shadow''')
         sql.execute('''rename table video_shadow_cooked to video_shadow''')

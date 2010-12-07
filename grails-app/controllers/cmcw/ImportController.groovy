@@ -1,5 +1,9 @@
 package cmcw
 
+/**
+ * Some administrative tasks -- index the catalog, load a catalog, etc
+ * TODO: These should all be secured.
+ */
 class ImportController {
 
     def oauthService
@@ -22,14 +26,6 @@ class ImportController {
 
     def importFromShadow = {
         catalogService.importFromShadow()
-    }
-
-    def getDetails = {
-        httpClientService.get("http://www.yahoo.com")
-    }
-
-    def details = {
-        netflixService.details 'http://api.netflix.com/catalog/titles/movies/512381'
     }
 
 }

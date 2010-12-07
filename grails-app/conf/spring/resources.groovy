@@ -1,8 +1,7 @@
-import com.mchange.v2.c3p0.ComboPooledDataSource
-
 import org.codehaus.groovy.grails.commons.ConfigurationHolder as CH
 
-// Place your Spring DSL code here
+import com.mchange.v2.c3p0.ComboPooledDataSource
+
 beans = {
 
     /**

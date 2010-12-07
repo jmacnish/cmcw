@@ -2,11 +2,11 @@ package cmcw
 
 class OpenID {
 
-  String url
+    String url
 
-  static belongsTo = [user: User]
+    static belongsTo = [user: User]
 
-  static constraints = {
-    url unique: true
-  }
+    static constraints = {
+        url unique: true
+    }
 }
