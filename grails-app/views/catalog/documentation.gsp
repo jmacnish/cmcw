@@ -64,7 +64,8 @@
 <h3>Parameters:</h3>
 <p>The criteria for the catalog search:
 <ul>
-  <li>availableAfter : A date, in seconds from epoch format, to search for videos with their availability after this date</li>
+  <li>availableAfter : A date, in seconds from epoch format, to search for videos with their availability at or after this date</li>
+  <li>availableUpto : A date, in seconds from epoch format, to search for videos with their availability up to but not including this date</li>
   <li>videoType : The type of video to restrict searches to:
     <ul>
       <li>movies</li>
