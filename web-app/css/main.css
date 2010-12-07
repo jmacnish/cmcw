@@ -1,7 +1,3 @@
-html * {
-    margin: 0; /*padding: 0; SELECT NOT DISPLAYED CORRECTLY IN FIREFOX */
-}
-
 /* GENERAL */
 
 .spinner {
@@ -14,10 +10,6 @@ body {
     background: #fff;
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
-}
-
-#grailsLogo {
-    padding: 20px;
 }
 
 a:link, a:visited, a:hover {

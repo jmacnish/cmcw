@@ -29,7 +29,7 @@ environments {
   }
   production {
     dataSource {
-      dbCreate = "create-drop"
+      dbCreate = "update"
       url = "jdbc:mysql://localhost/cmcw"
     }
   }

@@ -2,7 +2,9 @@ package cmcw
 
 import oauth.signpost.OAuthConsumer
 
-
+/**
+ * Handles dealing with the netflix API.
+ */
 class NetflixService {
 
     static transactional = true
@@ -12,6 +14,9 @@ class NetflixService {
     def details(netflixId) {
         def type = typeFromNetflixId(netflixId)
         def id = idFromNetflixId(netflixId)
+        if (type == null || id == null) {
+            return null
+        }
         final OAuthConsumer consumer = oauthService.getConsumer('netflix')
         def uri = "http://api.netflix.com/catalog/titles/${type.netflixIdentifier}/$id"
         log.debug("type=" + typeFromNetflixId(uri))
@@ -20,7 +25,7 @@ class NetflixService {
         def result = httpClientService.get(signed)
         def catalog_title = new XmlSlurper().parseText(result.body)
         def boxArtLargeUrl = catalog_title?.box_art?.@large?.text()
-        return [boxArtLargeUrl:boxArtLargeUrl]
+        return [boxArtLargeUrl: boxArtLargeUrl]
     }
 
     def index() {
@@ -30,13 +35,13 @@ class NetflixService {
         def response = httpClientService.head(signed)
         log.debug("Etag=" + response.etag)
         return null
-        def tmpFile = File.createTempFile("catalog",".xml")
+        def tmpFile = File.createTempFile("catalog", ".xml")
         def etagFileResponse = httpClientService.get(signed, tmpFile)
         def existing = CatalogImport.findAllByEtag(etagFileResponse.etag)
         if (existing.count() == 0) {
             log.info("Creating new import catalog")
             def fileName = tmpFile.absolutePath
-            def catalogImport = new CatalogImport(file:fileName, etag: etagFileResponse.etag)
+            def catalogImport = new CatalogImport(file: fileName, etag: etagFileResponse.etag)
             catalogImport.save()
             if (catalogImport.hasErrors()) {
                 log.error("Error creating new catalogImport=" + catalogImport.errors)
@@ -47,17 +52,21 @@ class NetflixService {
     }
 
     def typeFromNetflixId(netflixId) {
-        def m = java.util.regex.Pattern.compile( /catalog\/titles\/(.*)\// ).matcher(netflixId)
+        log.debug("netflixId=" + netflixId)
+        def m = java.util.regex.Pattern.compile(/catalog\/titles\/(.*)\//).matcher(netflixId)
         m.matches()
+        if (m[0][1] == null) {
+            log.error("Could not get type from netflix id")
+        }
         def identifier = m[0][1]
         return VideoType.findByNetflixIdentifier(identifier)
     }
 
     def idFromNetflixId(netflixId) {
-        def m = java.util.regex.Pattern.compile( /catalog\/titles\/[^\/]*\/(.*)/ ).matcher(netflixId)
+        def m = java.util.regex.Pattern.compile(/catalog\/titles\/[^\/]*\/(.*)/).matcher(netflixId)
         m.matches()
         return m[0][1]
     }
 
-
 }
+

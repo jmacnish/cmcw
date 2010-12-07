@@ -8,11 +8,10 @@ import org.apache.http.client.HttpResponseException
 import org.apache.http.client.ResponseHandler
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.DefaultHttpClient
-import org.apache.http.util.EntityUtils
-import org.apache.http.client.methods.HttpHead
-import org.apache.http.params.HttpParams
 import org.apache.http.params.BasicHttpParams
 import org.apache.http.params.CoreConnectionPNames
+import org.apache.http.params.HttpParams
+import org.apache.http.util.EntityUtils
 import org.apache.log4j.Logger
 
 class HttpClientService {
@@ -106,7 +105,7 @@ class EtagResponseHandler implements ResponseHandler {
                 body = EntityUtils.toString(entity)
             }
         }
-        return new EtagResponse(etag:etag, body:body)
+        return new EtagResponse(etag: etag, body: body)
     }
 
 }
@@ -155,7 +154,7 @@ class StreamingEtagResponseHandler implements ResponseHandler {
         def etag = response.getHeaders("ETag")?.first()?.getValue()
         log.debug("etag=" + etag)
         log.debug('file.size=' + file.size() + ' headers=' + response.getAllHeaders())
-        return new EtagFileResponse(etag:etag, file:file)
+        return new EtagFileResponse(etag: etag, file: file)
     }
 
 }

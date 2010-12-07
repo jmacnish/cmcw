@@ -1,12 +1,5 @@
 package cmcw
 
-import oauth.signpost.OAuthConsumer
-import org.xml.sax.Attributes
-import org.xml.sax.helpers.DefaultHandler
-import javax.xml.parsers.SAXParserFactory
-import org.xml.sax.InputSource
-import cmcw.VideoType
-
 class ImportController {
 
     def oauthService
@@ -16,11 +9,19 @@ class ImportController {
 
     def index = {
         def catalogImport = netflixService.index()
-        [catalogImport:catalogImport]
+        [catalogImport: catalogImport]
     }
 
     def importCatalog = {
-        catalogService.importCatalog '/home/jmacnish/IdeaProjects/netapi/catalog.xml'
+        def catalogImport = CatalogImport.findByEtag("0000")
+        if (catalogImport != null) {
+            log.debug("Importing catalog with file=" + catalogImport.file)
+            catalogService.importCatalog catalogImport.file
+        }
+    }
+
+    def importFromShadow = {
+        catalogService.importFromShadow()
     }
 
     def getDetails = {

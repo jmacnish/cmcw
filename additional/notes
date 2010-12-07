@@ -3,3 +3,20 @@
 
 2) API doesn't really document date format (it's seconds from epoch)
 
+3) duplicates in your catalog?
+
+Annie Oakley: 50th anniversary addition
+http://api.netflix.com/catalog/titles/movies/70021777
+
+42 duplicates, all with same netflixId
+
+4) Your versioning plan is wrong.
+
+Use of the version parameter is optional. If not specified in a request,
+then by default the most recent, stable version of the API is used.
+At this time, the API only supports a version value of 1.0.
+
+This means that old clients that have no clue about versioning (or using the default) will suddenly break when v2
+comes out.  Make it by default use 1.0 if not specified, or version another way.
+
+

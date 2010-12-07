@@ -4,9 +4,6 @@
 <head>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
   <link rel="stylesheet" href="${resource(dir:'css',file:'fb.css')}" />
-  <script type="text/javascript">
-    // we will add our javascript code here
-  </script>
   <title>Can't Miss, Can't Watch</title>
 </head>
 
@@ -67,6 +64,7 @@
           }
         });
       }
+
       if (allMissed.length > 0) {
         if (allWatched.length > 0) {
           body += "\n\n";
@@ -79,7 +77,7 @@
           }
         });
       }
-      //alert("return val: "+body);
+
       if (enableFB) {
         FB.login(function(response) {
           if (response.session) {
@@ -120,13 +118,6 @@
     Can't Miss, Can't Watch
   </div>
 
-
-
-  <!--
-  <div id="logged-in-status" hidden="true">
-  </div>
-  -->
-
   <p>
   <h4>Videos for this week:</h4>
 </p>
@@ -135,7 +126,6 @@
 
     <g:each in="${days}" var="d">
 
-      <!--<div class="container"> -->
       <div id="row_container">
         <div class="fbbluebox" style="width: 800px;">
           <g:formatDate format="EEEE, MMMM dd" date="${d}"/>
@@ -151,18 +141,18 @@
               <a  href="${v.getRealURL()}" title="${v.title}" >
                 <div class="site_img_sz"><img src="${v.boxArtLargeUrl}" width="110" height="150"/></div>
               </a>
-            </div id="image_container">
+            </div>
             <p><B>${v.title}</B></br>
-            <button type="submit" class="link" category="selection"><span>watch</span></button>
-            <button type="submit" class="link" category="selection"><span>miss</span></button>
+              <button type="submit" class="link" category="selection"><span>watch</span></button>
+              <button type="submit" class="link" category="selection"><span>miss</span></button>
             </p>
-        </div>
+          </div>
         </g:each>
 
         <div class="spacer">
           &nbsp;
         </div>
-      </div id="row_container">
+      </div>
     </g:each>
 
     <button id="post" type="submit" class="link"><span>Post to my wall</span></button>
