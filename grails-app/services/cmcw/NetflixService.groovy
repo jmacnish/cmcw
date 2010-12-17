@@ -31,24 +31,24 @@ class NetflixService {
     def index() {
         def uri = 'http://api.netflix.com/catalog/titles/index'
         final OAuthConsumer consumer = oauthService.getConsumer('netflix')
-        def signed = consumer.sign(uri)
-        def response = httpClientService.head(signed)
-        log.debug("Etag=" + response.etag)
-        return null
+        def signedUri = consumer.sign(uri)
         def tmpFile = File.createTempFile("catalog", ".xml")
-        def etagFileResponse = httpClientService.get(signed, tmpFile)
-        def existing = CatalogImport.findAllByEtag(etagFileResponse.etag)
-        if (existing.count() == 0) {
-            log.info("Creating new import catalog")
-            def fileName = tmpFile.absolutePath
-            def catalogImport = new CatalogImport(file: fileName, etag: etagFileResponse.etag)
+        def etagFileResponse = httpClientService.get(signedUri, tmpFile)
+        log.info("Creating new import catalog")
+        def fileName = tmpFile.absolutePath
+        def etag = etagFileResponse.etag
+        def catalogImport = CatalogImport.findByEtag(etag)
+        if (catalogImport == null) {
+            log.info("Creating new catalogImport with file=" + fileName + " etag=" + etag)
+            catalogImport = new CatalogImport(file: fileName, etag: etag)
             catalogImport.save()
             if (catalogImport.hasErrors()) {
                 log.error("Error creating new catalogImport=" + catalogImport.errors)
             }
-            return catalogImport
+        } else {
+            log.info("Not creating new catalogImport:  import already exists with etag=" + etag)
         }
-        return null
+        return catalogImport
     }
 
     def typeFromNetflixId(netflixId) {

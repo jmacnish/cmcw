@@ -72,6 +72,7 @@ class BootStrap {
         new VideoType(netflixIdentifier: 'series').save()
 
         new CatalogImport(file: "/var/lib/tomcat6/webapps/catalog.xml", etag: "0000").save()
+        new CatalogImport(file: "/var/lib/tomcat6/webapps/catalog456.xml", etag: "0001").save()
     }
 
     def init = { servletContext ->

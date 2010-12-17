@@ -2,7 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e96b30f0-f106-4596-bda0-f0f9c2d6d7d6" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.text" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/controllers/cmcw/VideoController.groovy" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/cmcw/VideoControllerTests.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application.properties" afterPath="$PROJECT_DIR$/application.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmcw-grailsPlugins.iml" afterPath="$PROJECT_DIR$/cmcw-grailsPlugins.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cmcw.iml" afterPath="$PROJECT_DIR$/cmcw.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/cmcw/HttpClientService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/cmcw/HttpClientService.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/cmcw/NetflixService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/cmcw/NetflixService.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/import/index.gsp" afterPath="$PROJECT_DIR$/grails-app/views/import/index.gsp" />
     </list>
     <ignored path="cmcw.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,6 +75,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="ImportController.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="25" selection-start="406" selection-end="406" vertical-scroll-proportion="-13.217391">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="CatalogService.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/CatalogService.groovy">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,28 +93,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+      <file leaf-file-name="README.text" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.text">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="32" selection-start="3599" selection-end="3599" vertical-scroll-proportion="0.0">
+            <state line="19" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CatalogController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy">
+      <file leaf-file-name="VideoController.groovy" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/VideoController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="65" selection-start="523" selection-end="536" vertical-scroll-proportion="-15.695652">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImportController.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="9" selection-start="140" selection-end="140" vertical-scroll-proportion="-4.9565215">
+            <state line="6" column="0" selection-start="96" selection-end="96" vertical-scroll-proportion="0.17952757">
               <folding />
             </state>
           </provider>
@@ -101,34 +114,34 @@
       <file leaf-file-name="EntryController.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="45" selection-start="275" selection-end="275" vertical-scroll-proportion="-10.73913">
+            <state line="26" column="27" selection-start="863" selection-end="863" vertical-scroll-proportion="-20.652174">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.gsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/entry/index.gsp">
+      <file leaf-file-name="NetflixService.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/NetflixService.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="77" selection-start="5036" selection-end="5041" vertical-scroll-proportion="-2.5128205">
+            <state line="49" column="96" selection-start="1978" selection-end="1978" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fb.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web-app/css/fb.css">
+      <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="10" selection-start="1909" selection-end="1909" vertical-scroll-proportion="-20.407408">
+            <state line="72" column="8" selection-start="3800" selection-end="3800" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="documentation.gsp" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/catalog/documentation.gsp">
+      <file leaf-file-name="CatalogController.groovy" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="80" column="0" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.7152209">
+            <state line="20" column="65" selection-start="523" selection-end="536" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -148,22 +161,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/conf/Config.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/conf/UrlMappings.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/domain/cmcw/CatalogImport.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/domain/cmcw/VideoType.groovy" />
         <option value="$PROJECT_DIR$/grails-app/domain/cmcw/Role.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/services/cmcw/HttpClientService.groovy" />
         <option value="$PROJECT_DIR$/grails-app/services/cmcw/RecordsHandler.groovy" />
         <option value="$PROJECT_DIR$/grails-app/services/cmcw/ShadowService.groovy" />
         <option value="$PROJECT_DIR$/grails-app/services/cmcw/CatalogService.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy" />
-        <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/entry/index.gsp" />
         <option value="$PROJECT_DIR$/web-app/css/fb.css" />
         <option value="$PROJECT_DIR$/grails-app/views/catalog/documentation.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/services/cmcw/HttpClientService.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/services/cmcw/NetflixService.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/views/import/index.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/VideoController.groovy" />
+        <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" />
+        <option value="$PROJECT_DIR$/README.text" />
       </list>
     </option>
   </component>
@@ -200,6 +213,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -221,7 +235,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -239,9 +252,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -292,6 +305,25 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method>
+        <option name="AntTarget" enabled="false" />
+        <option name="BuildArtifacts" enabled="false" />
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="false" />
+        <option name="SBT.BeforeRunTask" enabled="false" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" />
       <module name="" />
@@ -325,25 +357,6 @@
         <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
-        <option name="SBT.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" runner="emma" />
       <option name="MAIN_CLASS_NAME" />
@@ -363,27 +376,6 @@
         <option name="Make" enabled="true" />
         <option name="Maven.BeforeRunTask" enabled="false" />
         <option name="SBT.BeforeRunTask" enabled="false" />
-      </method>
-    </configuration>
-    <configuration default="true" type="PythonDocTestRunConfigurationType" factoryName="Python's doctests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <module name="cmcw" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="PATTERN" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <method>
-        <option name="AntTarget" enabled="false" />
-        <option name="BuildArtifacts" enabled="false" />
-        <option name="Make" enabled="true" />
-        <option name="Maven.BeforeRunTask" enabled="false" />
       </method>
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -481,30 +473,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1920" height="1175" extended-state="1" />
+    <frame x="0" y="24" width="1920" height="1175" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32983795" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921028" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888466" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39942804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Grails View" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888466" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3282588" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6701621" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.6707897" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67206866" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32507148" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32434943" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32888466" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="EJB" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.67206866" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -547,86 +539,80 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/HttpClientService.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/cmcw/Video.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="56" selection-start="626" selection-end="626" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="4" column="6" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0" />
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/NetflixService.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/cmcw/VideoType.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="6" selection-start="106" selection-end="106" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="5" column="6" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0" />
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/ParseState.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="5" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="5" column="5" selection-start="67" selection-end="67" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/RecordsHandler.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="21" selection-start="232" selection-end="232" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="10" column="6" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/ShadowService.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/HttpClientService.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="8" selection-start="1439" selection-end="1439" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="53" column="0" selection-start="1724" selection-end="1724" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/spring/resources.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/cmcw/CatalogImport.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="60" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="5" column="6" selection-start="73" selection-end="73" vertical-scroll-proportion="-2.159091" />
+      </provider>
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/BuildConfig.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/import/index.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="20" column="74" selection-start="675" selection-end="675" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/Config.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/entry/index.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="24" selection-start="2319" selection-end="2335" vertical-scroll-proportion="0.0">
+        <state line="127" column="11" selection-start="4503" selection-end="4507" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/services/cmcw/NetflixService.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="96" selection-start="1978" selection-end="1978" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="8" selection-start="3800" selection-end="3800" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="65" selection-start="523" selection-end="536" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="27" selection-start="863" selection-end="863" vertical-scroll-proportion="-20.652174">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="9" selection-start="140" selection-end="140" vertical-scroll-proportion="-4.9565215">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="45" selection-start="275" selection-end="275" vertical-scroll-proportion="-10.73913">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web-app/css/fb.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="10" selection-start="1909" selection-end="1909" vertical-scroll-proportion="-20.407408">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/entry/index.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="77" selection-start="5036" selection-end="5041" vertical-scroll-proportion="-2.5128205">
+        <state line="16" column="25" selection-start="406" selection-end="406" vertical-scroll-proportion="-13.217391">
           <folding />
         </state>
       </provider>
@@ -638,23 +624,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
+    <entry file="file://$PROJECT_DIR$/README.text">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="32" selection-start="3599" selection-end="3599" vertical-scroll-proportion="0.0">
+        <state line="19" column="0" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy">
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/cmcw/VideoController.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="65" selection-start="523" selection-end="536" vertical-scroll-proportion="-15.695652">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/catalog/documentation.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="0" selection-start="1886" selection-end="1886" vertical-scroll-proportion="0.7152209">
+        <state line="6" column="0" selection-start="96" selection-end="96" vertical-scroll-proportion="0.17952757">
           <folding />
         </state>
       </provider>
@@ -667,7 +646,7 @@
           <value>
             <GrailsSettings>
               <option name="buildConfigCrc" value="5987499" />
-              <option name="pluginDependenciesCrc" value="-1092756032" />
+              <option name="pluginDependenciesCrc" value="-233459036" />
               <option name="properties">
                 <map>
                   <entry key="grails.project.class.dir" value="target/classes" />
@@ -685,6 +664,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions />
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
 

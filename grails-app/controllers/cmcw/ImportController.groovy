@@ -12,12 +12,19 @@ class ImportController {
     def netflixService
 
     def index = {
+        def catalogImports = CatalogImport.findAll()
+        log.debug("ALl catalog imports=" + catalogImports)
+        [catalogImports: catalogImports]
+    }
+
+    def fetchFromNetflix = {
         def catalogImport = netflixService.index()
         [catalogImport: catalogImport]
     }
 
-    def importCatalog = {
-        def catalogImport = CatalogImport.findByEtag("0000")
+    def loadToShadow = {
+        def etag = params["etag"]
+        def catalogImport = CatalogImport.findByEtag(etag)
         if (catalogImport != null) {
             log.debug("Importing catalog with file=" + catalogImport.file)
             catalogService.importCatalog catalogImport.file

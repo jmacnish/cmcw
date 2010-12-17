@@ -11,6 +11,8 @@ class EntryController {
     def catalogService
 
     def index = {
+        log.debug("params=" + params)
+
         // Get movies from 4 days ago until 2 days from now.
         def startOfPeriod = getStartOfAdjustedDay(new Date(), -4)
         def endOfPeriod = getStartOfAdjustedDay(new Date(), 2)

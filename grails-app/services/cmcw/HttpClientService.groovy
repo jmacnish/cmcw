@@ -13,6 +13,7 @@ import org.apache.http.params.CoreConnectionPNames
 import org.apache.http.params.HttpParams
 import org.apache.http.util.EntityUtils
 import org.apache.log4j.Logger
+import org.apache.http.client.methods.HttpHead
 
 /**
  * Fetches stuff over HTTP through a variety of methods.
@@ -59,12 +60,11 @@ class HttpClientService {
 
     def head(uri) {
         HttpClient httpclient = new DefaultHttpClient();
-        // def httpHead = new HttpHead(uri); // HEAD not allowed ?
-        HttpGet httpGet = new HttpGet(uri);
-        log.info("executing request " + httpGet.getURI());
+        def httpHead = new HttpHead(uri); // HEAD not allowed ?
+        log.info("executing request " + httpHead.getURI());
 
         ResponseHandler<EtagResponse> responseHandler = new EtagResponseHandler(false) // dont fetch body.
-        EtagResponse response = httpclient.execute(httpGet, responseHandler)
+        EtagResponse response = httpclient.execute(httpHead, responseHandler)
 
         // When HttpClient instance is no longer needed,
         // shut down the connection manager to ensure
