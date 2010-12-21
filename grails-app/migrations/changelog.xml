@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+    <changeSet author="jmacnish (generated)" id="1292918006353-1">
+        <createTable tableName="available_format">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="available_from" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="available_until" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="format_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-2">
+        <createTable tableName="catalog_import">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_imported" type="DATETIME"/>
+            <column name="etag" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="file" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-3">
+        <createTable tableName="format">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="netflix_label" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-4">
+        <createTable tableName="openid">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="url" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-5">
+        <createTable tableName="role">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="authority" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-6">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_expired" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_locked" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_expired" type="BIT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-7">
+        <createTable tableName="user_role">
+            <column name="role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-8">
+        <createTable tableName="video">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="box_art_large_url" type="VARCHAR(255)"/>
+            <column name="content_hash" type="VARCHAR(40)"/>
+            <column name="date_created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="netflix_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-9">
+        <createTable tableName="video_available_format">
+            <column name="video_available_formats_id" type="BIGINT"/>
+            <column name="available_format_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-10">
+        <createTable tableName="video_back">
+            <column defaultValueNumeric="0" name="id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="available_from" type="DATETIME"/>
+            <column name="available_until" type="DATETIME"/>
+            <column name="box_art_large_url" type="VARCHAR(255)"/>
+            <column name="content_hash" type="VARCHAR(40)"/>
+            <column name="date_created" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="netflix_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-11">
+        <createTable tableName="video_shadow">
+            <column name="bluray_available_from" type="DATETIME"/>
+            <column name="bluray_available_until" type="DATETIME"/>
+            <column name="dvd_available_from" type="DATETIME"/>
+            <column name="dvd_available_until" type="DATETIME"/>
+            <column name="instant_available_from" type="DATETIME"/>
+            <column name="instant_available_until" type="DATETIME"/>
+            <column name="netflix_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content_hash" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-12">
+        <createTable tableName="video_type">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="version" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="netflix_identifier" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-13">
+        <addPrimaryKey columnNames="role_id, user_id" tableName="user_role"/>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-14">
+        <createIndex indexName="available_index"
+            tableName="available_format" unique="false">
+            <column name="available_from"/>
+            <column name="available_until"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-15">
+        <createIndex indexName="etag" tableName="catalog_import" unique="true">
+            <column name="etag"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-16">
+        <createIndex indexName="file" tableName="catalog_import" unique="true">
+            <column name="file"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-17">
+        <createIndex indexName="netflix_label" tableName="format" unique="true">
+            <column name="netflix_label"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-18">
+        <createIndex indexName="type" tableName="format" unique="true">
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-19">
+        <createIndex indexName="url" tableName="openid" unique="true">
+            <column name="url"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-20">
+        <createIndex indexName="authority" tableName="role" unique="true">
+            <column name="authority"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-21">
+        <createIndex indexName="username" tableName="user" unique="true">
+            <column name="username"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-22">
+        <createIndex indexName="ContentHash_Idx" tableName="video" unique="false">
+            <column name="content_hash"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-23">
+        <createIndex indexName="netflix_id" tableName="video" unique="true">
+            <column name="netflix_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-24">
+        <createIndex indexName="content_hash_idx"
+            tableName="video_shadow" unique="false">
+            <column name="content_hash"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-25">
+        <createIndex indexName="netflix_id_idx" tableName="video_shadow" unique="true">
+            <column name="netflix_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-26">
+        <createIndex indexName="netflix_identifier"
+            tableName="video_type" unique="true">
+            <column name="netflix_identifier"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-27">
+        <addForeignKeyConstraint baseColumnNames="format_id"
+            baseTableName="available_format"
+            constraintName="FK586B662DA2F7000A" deferrable="false"
+            initiallyDeferred="false" referencedColumnNames="id" referencedTableName="format"/>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-28">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+            baseTableName="openid" constraintName="FKC3C3C8E5CB5C2B8A"
+            deferrable="false" initiallyDeferred="false"
+            referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-29">
+        <addForeignKeyConstraint baseColumnNames="role_id"
+            baseTableName="user_role"
+            constraintName="FK143BF46A263167AA" deferrable="false"
+            initiallyDeferred="false" referencedColumnNames="id" referencedTableName="role"/>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-30">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+            baseTableName="user_role"
+            constraintName="FK143BF46ACB5C2B8A" deferrable="false"
+            initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user"/>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-31">
+        <addForeignKeyConstraint baseColumnNames="available_format_id"
+            baseTableName="video_available_format"
+            constraintName="FK4E86D971716EF4DD" deferrable="false"
+            initiallyDeferred="false" referencedColumnNames="id" referencedTableName="available_format"/>
+    </changeSet>
+    <changeSet author="jmacnish (generated)" id="1292918006353-32">
+        <addForeignKeyConstraint
+            baseColumnNames="video_available_formats_id"
+            baseTableName="video_available_format"
+            constraintName="FK4E86D97143F06A23" deferrable="false"
+            initiallyDeferred="false" referencedColumnNames="id" referencedTableName="video"/>
+    </changeSet>
+</databaseChangeLog>

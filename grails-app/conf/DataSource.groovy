@@ -17,19 +17,19 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+            dbCreate = "" // one of 'create', 'create-drop','update'
             url = "jdbc:mysql://localhost/cmcw_dev"
         }
     }
     test {
         dataSource {
-            dbCreate = "update"
+            dbCreate = ""
             url = "jdbc:mysql://localhost/cmcw_dev"
         }
     }
     production {
         dataSource {
-            dbCreate = "update"
+            dbCreate = ""
             url = "jdbc:mysql://localhost/cmcw"
         }
     }
