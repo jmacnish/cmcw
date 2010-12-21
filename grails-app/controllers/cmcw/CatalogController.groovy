@@ -11,25 +11,28 @@ class CatalogController {
     def catalogService
 
     def search = {
-        def criteria = Video.createCriteria();
-        def videos = criteria {
+        def availableAfter = isDate(params, 'availableAfter')
+        def availableUpto = isDate(params, 'availableUpto')
+        def videoType = isParam(params, 'videoType')
+        def c = Video.createCriteria()
+        def videos = c.list {
             and {
-                def availableAfter = isDate(params, 'availableAfter')
                 if (availableAfter) {
-                    ge("availableFrom", availableAfter)
+                    availableFormats {
+                        ge('availableFrom', availableAfter)
+                        order('availableFrom', 'desc')
+                    }
                 }
-                def availableUpto = isDate(params, 'availableUpto')
                 if (availableUpto) {
-                    lt("availableFrom", availableUpto)
+                    availableFormats {
+                        lt('availableFrom', availableUpto)
+                    }
                 }
-                def videoType = isParam(params, 'videoType')
-                if (videoType) {
-                    like("netflixId", '%' + videoType + '%')
-                }
+                like("netflixId", '%' + videoType + '%')
             }
             firstResult(isInteger(params, 'start', 0))
             maxResults(isInteger(params, 'count', 10))
-            order("availableFrom", "desc")
+
         }
 
         // Add boxshots or anything else we want to have for a "full" video
@@ -37,11 +40,18 @@ class CatalogController {
 
         def results = []
         videos.each {
+            def formats = []
+            it.availableFormats.each { availableFormat ->
+                formats += [
+                        format: availableFormat.format.type,
+                        availableFrom: safeFormDate(availableFormat.availableFrom),
+                        availableUntil: safeFormDate(availableFormat.availableUntil)
+                        ]
+            }
             results +=
                 [title: it.title,
                         netflixId: it.netflixId,
-                        availableFrom: safeFormDate(it.availableFrom),
-                        availableUntil: safeFormDate(it.availableUntil),
+                        availableFormats: formats,
                         boxArtLargeUrl: it.boxArtLargeUrl
                 ]
         }

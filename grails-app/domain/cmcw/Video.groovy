@@ -3,21 +3,17 @@ package cmcw
 import java.security.MessageDigest
 
 class Video {
-
     String title
     String netflixId
-    Date availableFrom
-    Date availableUntil
     Date dateCreated
     Date lastUpdated
     String boxArtLargeUrl
     String contentHash
+    static hasMany = [availableFormats:AvailableFormat]
 
     static constraints = {
         title(blank: false)
         netflixId(blank: false, unique: true)
-        availableFrom(nullable: true)
-        availableUntil(nullable: true)
         boxArtLargeUrl(url: true, nullable: true)
         contentHash(maxSize: 40, nullable: true)
     }
@@ -58,7 +54,10 @@ class Video {
             */
             new BigInteger(1, messageDigest.digest()).toString(16).padLeft(40, '0')
         }
-        def content = title + availableFrom + availableUntil
+        def content = title
+        availableFormats.each {
+            content += it.hashCode().toString()
+        }
         contentHash = content.toSHA1()
         assert contentHash.length() == 40
         return contentHash

@@ -27,7 +27,7 @@ class ImportController {
         def catalogImport = CatalogImport.findByEtag(etag)
         if (catalogImport != null) {
             log.debug("Importing catalog with file=" + catalogImport.file)
-            catalogService.importCatalog catalogImport.file
+            catalogService.importCatalog catalogImport
         }
     }
 

@@ -18,8 +18,12 @@ class ShadowService {
     def create() {
         def sql = new Sql(dataSource)
         sql.execute('''create table video_shadow (
-  `available_from` datetime DEFAULT NULL,
-  `available_until` datetime DEFAULT NULL,
+  `bluray_available_from` datetime DEFAULT NULL,
+  `bluray_available_until` datetime DEFAULT NULL,
+  `dvd_available_from` datetime DEFAULT NULL,
+  `dvd_available_until` datetime DEFAULT NULL,
+  `instant_available_from` datetime DEFAULT NULL,
+  `instant_available_until` datetime DEFAULT NULL,
   `netflix_id` varchar(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content_hash` varchar(40) NOT NULL
@@ -64,15 +68,43 @@ class BatchInsert {
 
     def insert(videos) {
         int[] updateCounts = jdbcTemplate.batchUpdate(
-                "insert into video_shadow values (?, ?, ?, ?, ?)",
+                "insert into video_shadow values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 new BatchPreparedStatementSetter() {
                     public void setValues(PreparedStatement ps, int i) throws SQLException {
                         def video = videos.get(i)
-                        ps.setDate(1, dateConvert(video.availableFrom))
-                        ps.setDate(2, dateConvert(video.availableUntil))
-                        ps.setString(3, video.netflixId)
-                        ps.setString(4, video.title)
-                        ps.setString(5, video.contentHash)
+                        def blurayAvailableFrom = null
+                        def blurayAvailableUntil = null
+                        def dvdAvailableFrom = null
+                        def dvdAvailableUntil = null
+                        def instantAvailableFrom = null
+                        def instantAvailableUntil = null
+                        video.availableFormats.each {
+                            def AvailableFormat availableFormat = it
+                            def Format format = it.format
+                            switch (format.netflixLabel) {
+                                case 'DVD':
+                                    dvdAvailableFrom = availableFormat.availableFrom
+                                    dvdAvailableUntil = availableFormat.availableUntil
+                                    break
+                                case 'Blu-ray':
+                                    blurayAvailableFrom = availableFormat.availableFrom
+                                    blurayAvailableUntil = availableFormat.availableUntil
+                                    break
+                                case 'instant':
+                                    instantAvailableFrom = availableFormat.availableFrom
+                                    instantAvailableUntil = availableFormat.availableUntil
+                                    break
+                            }
+                        }
+                        ps.setDate(1, dateConvert(blurayAvailableFrom))
+                        ps.setDate(2, dateConvert(blurayAvailableUntil))
+                        ps.setDate(3, dateConvert(dvdAvailableFrom))
+                        ps.setDate(4, dateConvert(dvdAvailableUntil))
+                        ps.setDate(5, dateConvert(instantAvailableFrom))
+                        ps.setDate(6, dateConvert(instantAvailableUntil))
+                        ps.setString(7, video.netflixId)
+                        ps.setString(8, video.title)
+                        ps.setString(9, video.contentHash)
                     }
 
                     public int getBatchSize() {

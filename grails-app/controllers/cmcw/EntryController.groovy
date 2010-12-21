@@ -29,6 +29,7 @@ class EntryController {
                 'videoType': 'movies'
         ]
         def result = restTemplate.getForObject(uri, String.class, vars)
+        log.debug("Result=" + result)
         def videosMaps = JSON.parse(result)
         def videos = []
         videosMaps.each {

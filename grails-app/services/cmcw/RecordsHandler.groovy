@@ -3,6 +3,7 @@ package cmcw
 import org.apache.log4j.Logger
 import org.xml.sax.Attributes
 import org.xml.sax.helpers.DefaultHandler
+import org.hibernate.annotations.BatchSize
 
 /**
  * Our SAX parser for parsing the Netflix index XML.  We need SAX because we can't parse
@@ -10,6 +11,9 @@ import org.xml.sax.helpers.DefaultHandler
  */
 class RecordsHandler extends DefaultHandler {
     static log = Logger.getLogger(RecordsHandler.class)
+    static def BatchSize = 10000
+    static final def emptyAvailableFrom = AvailableFormat.EarliestAvailableFrom
+    static final def emptyAvailableUntil = AvailableFormat.LastAvailableUntil
     def state = ParseState.NONE
     def currentTitle = null
     def currentId = null
@@ -17,12 +21,18 @@ class RecordsHandler extends DefaultHandler {
     def currentAvailableUntil = null
     def count = 0
     def time = System.currentTimeMillis()
-    def videoQueue = []
+    def videoQueue = new ArrayList(BatchSize)
     def batchInsert
-    static def BatchSize = 10000
+    def currentFormatAvailability = [:]
+    def formatMap
 
-    RecordsHandler(batchInsert) {
+    RecordsHandler(batchInsert, formats) {
         this.batchInsert = batchInsert
+        formatMap = [:]
+        formats.each {
+            def Format format = it
+            formatMap[format.netflixLabel] = format
+        }
     }
 
     void startElement(String ns, String localName, String qName, Attributes atts) {
@@ -33,19 +43,29 @@ class RecordsHandler extends DefaultHandler {
                 break
             case 'availability':
                 state = ParseState.AVAILABILITY
+                currentAvailableFrom = null
+                currentAvailableUntil = null
                 def availableFrom = atts.getValue('available_from')
                 def availableUntil = atts.getValue('available_until')
                 if (availableFrom != null) {
                     def availableFromDate = new Date(Long.parseLong(availableFrom) * 1000L)
-                    if (currentAvailableFrom == null || availableFromDate.compareTo(currentAvailableFrom) < 0) {
-                        currentAvailableFrom = availableFromDate
-                    }
+                    currentAvailableFrom = availableFromDate
+                } else {
+                    currentAvailableFrom = emptyAvailableFrom
                 }
                 if (availableUntil != null) {
                     def availableUntilDate = new Date(Long.parseLong(availableUntil) * 1000L)
-                    if (currentAvailableUntil == null || availableUntilDate.compareTo(currentAvailableUntil) > 1) {
-                        currentAvailableUntil = availableUntilDate
-                    }
+                    currentAvailableUntil = availableUntilDate
+                } else {
+                    currentAvailableUntil = emptyAvailableUntil
+                }
+                break
+            case 'category':
+                if (state == ParseState.AVAILABILITY) {
+                    def label = atts.getValue('label')
+                    currentFormatAvailability[label] =
+                        ['currentAvailableFrom':currentAvailableFrom,
+                                'currentAvailableUntil':currentAvailableUntil]
                 }
                 break
             case 'id':
@@ -78,22 +98,36 @@ class RecordsHandler extends DefaultHandler {
                     state = ParseState.NONE
                 }
                 break
+            case 'availability':
+                currentAvailableFrom = null
+                currentAvailableUntil = null
+                break
             case 'title_index_item': // end of object
                 if (currentId != null) {
-                    def video = Video.findByNetflixId(currentId)
-                    if (video == null) {
-                        video = new Video(title: currentTitle, netflixId: currentId, availableFrom: currentAvailableFrom, availableUntil: currentAvailableUntil, boxArtLargeUrl: null)
-                    } else {
-                        video.title = currentTitle
-                        // Do not update or change netflixId
-                        video.availableFrom = currentAvailableFrom
-                        video.availableUntil = currentAvailableUntil
+                    def availableFormats = []
+                    currentFormatAvailability.keySet().each {
+                        def Format format = formatMap.get(it)
+                        def currentFormatAvailable = currentFormatAvailability.get(it)
+                        def currentFormatAvailableFrom = currentFormatAvailable.get('currentAvailableFrom')
+                        def currentFormatAvailableUntil = currentFormatAvailable.get('currentAvailableUntil')
+                        if (format != null) {
+                            def availableFormat = new AvailableFormat(format: format,
+                                    availableFrom: currentFormatAvailableFrom,
+                                    availableUntil: currentFormatAvailableUntil)
+                            availableFormats += availableFormat
+                        } else {
+                            log.error("Could not look up format for format=" + it)
+                        }
                     }
+                    def video = new Video(title: currentTitle,
+                            netflixId: currentId,
+                            availableFormats: availableFormats,
+                            boxArtLargeUrl: null)
                     video.generateHash()
                     videoQueue += video
                     if (videoQueue.size() == BatchSize) {
                         batchInsert.insert(videoQueue)
-                        videoQueue = []
+                        videoQueue.clear()
                     }
                     count++
                     if (count % 1000 == 0) {
@@ -106,6 +140,7 @@ class RecordsHandler extends DefaultHandler {
                 currentId = null
                 currentAvailableFrom = null
                 currentAvailableUntil = null
+                currentFormatAvailability.clear()
                 state = ParseState.NONE
                 break
             case 'external_ids':
@@ -115,7 +150,7 @@ class RecordsHandler extends DefaultHandler {
                 if (videoQueue.size() > 0) {
                     println("Videos remain in queue (" + videoQueue.size() + " videos) -- importing remainder")
                     batchInsert.insert(videoQueue)
-                    videoQueue = []
+                    videoQueue.clear()
                 }
                 break
         }
