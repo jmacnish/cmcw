@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e96b30f0-f106-4596-bda0-f0f9c2d6d7d6" name="Default" comment="Fix">
+    <list default="true" id="e96b30f0-f106-4596-bda0-f0f9c2d6d7d6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/cmcw/Video.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/cmcw/Video.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/entry/index.gsp" afterPath="$PROJECT_DIR$/grails-app/views/entry/index.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web-app/css/fb.css" afterPath="$PROJECT_DIR$/web-app/css/fb.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.markdown" afterPath="$PROJECT_DIR$/README.markdown" />
     </list>
     <ignored path="cmcw.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,10 +76,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataSource.groovy" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DataSource.groovy" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="24" selection-start="785" selection-end="785" vertical-scroll-proportion="0.84319526">
+            <state line="30" column="20" selection-start="785" selection-end="785" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.markdown" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.markdown">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,15 +138,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BootStrap.groovy" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/conf/BootStrap.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="59" selection-start="895" selection-end="895" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindManager">
@@ -157,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/VideoController.groovy" />
         <option value="$PROJECT_DIR$/README.text" />
         <option value="$PROJECT_DIR$/grails-app/domain/cmcw/CatalogImport.groovy" />
         <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy" />
@@ -173,6 +167,7 @@
         <option value="$PROJECT_DIR$/grails-app/views/entry/index.gsp" />
         <option value="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/conf/DataSource.groovy" />
+        <option value="$PROJECT_DIR$/README.markdown" />
       </list>
     </option>
   </component>
@@ -275,6 +270,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmcw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmcw" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -743,7 +752,7 @@
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add liquibase for database migrations.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Added more formats into test data&#10;- EntryController no longer needs to use REST API to get it's data, just get it straight from the DB.&#10;- Fix frontend code to have toggle mechanics (&quot;Nothing&quot;-&gt;&quot;Watch&quot;-&gt;&quot;Miss&quot;-&gt;&quot;Nothing&quot;)&#10;- Add graphics support and CSS for toggle mechanics.&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -762,6 +771,7 @@
     <MESSAGE value="Development.&#10;" />
     <MESSAGE value="Images for watch/miss" />
     <MESSAGE value="Add liquibase for database migrations.&#10;" />
+    <MESSAGE value="- Added more formats into test data&#10;- EntryController no longer needs to use REST API to get it's data, just get it straight from the DB.&#10;- Fix frontend code to have toggle mechanics (&quot;Nothing&quot;-&gt;&quot;Watch&quot;-&gt;&quot;Miss&quot;-&gt;&quot;Nothing&quot;)&#10;- Add graphics support and CSS for toggle mechanics.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -771,16 +781,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/cmcw/CatalogImport.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="35" selection-start="335" selection-end="335" vertical-scroll-proportion="-7.340909">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file:///usr/local/java/grails-1.3.6/src/java/grails/orm/HibernateCriteriaBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1162" column="0" selection-start="44537" selection-end="44537" vertical-scroll-proportion="0.0">
@@ -886,7 +886,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/conf/DataSource.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="24" selection-start="785" selection-end="785" vertical-scroll-proportion="0.84319526">
+        <state line="30" column="20" selection-start="785" selection-end="785" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.markdown">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
