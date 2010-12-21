@@ -21,50 +21,54 @@ class BootStrap {
         def blurayFormat = new Format(type: "bluray", netflixLabel: "Blu-ray")
         def instantFormat = new Format(type: "instant", netflixLabel: "instant")
 
+        def dvdAndBluray = [dvdFormat, blurayFormat] as Set
+        def instantOnly = [instantFormat] as Set
+        def dvdBlurayInstant = [dvdFormat, blurayFormat,instantFormat] as Set
+
         // spread!
         [dvdFormat, blurayFormat, instantFormat]*.save()
 
-        def availableFrom = new Date()
+        def availableFrom = nextDay(new Date(), -4)
         def videos = []
         videos += new Video(title: "Fly Away Home",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/512381",
-                availableFormats: makeFormatSet(dvdFormat, nextDay(availableFrom, 0)),
+                availableFormats: makeFormatSet(dvdAndBluray, nextDay(availableFrom, 0)),
                 boxArtLargeUrl: "http://cdn-1.nflximg.com/us/boxshots/large/512381.jpg")
         videos += new Video(title: "Forever Young",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/517905",
-                availableFormats: makeFormatSet(blurayFormat, nextDay(availableFrom, 1)),
+                availableFormats: makeFormatSet(dvdBlurayInstant, nextDay(availableFrom, 1)),
                 boxArtLargeUrl: "http://cdn-5.nflximg.com/us/boxshots/large/517905.jpg")
         videos += new Video(title: "Trinity and Beyond: Atomic Bomb",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/20767131",
-                availableFormats: makeFormatSet(instantFormat, nextDay(availableFrom, 2)),
+                availableFormats: makeFormatSet(instantOnly, nextDay(availableFrom, 2)),
                 boxArtLargeUrl: "http://cdn-1.nflximg.com/us/boxshots/large/20767131.jpg")
         videos += new Video(title: "Striptease",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/1008681",
-                availableFormats: makeFormatSet(dvdFormat, nextDay(availableFrom, 3)),
+                availableFormats: makeFormatSet(dvdAndBluray, nextDay(availableFrom, 3)),
                 boxArtLargeUrl: "http://cdn-1.nflximg.com/us/boxshots/large/1008681.jpg")
         videos += new Video(title: "God.com",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/20281947",
-                availableFormats: makeFormatSet(blurayFormat, nextDay(availableFrom, 4)),
+                availableFormats: makeFormatSet(dvdBlurayInstant, nextDay(availableFrom, 4)),
                 boxArtLargeUrl: "http://cdn-7.nflximg.com/us/boxshots/large/20281947.jpg")
         videos += new Video(title: "CNN Millennium 2000",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/26211046",
-                availableFormats: makeFormatSet(instantFormat, nextDay(availableFrom, 5)),
+                availableFormats: makeFormatSet(instantOnly, nextDay(availableFrom, 5)),
                 boxArtLargeUrl: "http://cdn-6.nflximg.com/us/boxshots/large/26211046.jpg")
         videos += new Video(title: "Fist of Fear, Touch of Death",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/507032",
-                availableFormats: makeFormatSet(dvdFormat, nextDay(availableFrom, 6)),
+                availableFormats: makeFormatSet(dvdAndBluray, nextDay(availableFrom, 6)),
                 boxArtLargeUrl: "http://cdn-2.nflximg.com/us/boxshots/large/507032.jpg")
         videos += new Video(title: "Titanica: IMAX",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/13368175",
-                availableFormats: makeFormatSet(blurayFormat, nextDay(availableFrom, 7)),
+                availableFormats: makeFormatSet(dvdBlurayInstant, nextDay(availableFrom, 7)),
                 boxArtLargeUrl: "http://cdn-5.nflximg.com/us/boxshots/large/13368175.jpg")
         videos += new Video(title: "Steamboat Bill, Jr.",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/999095",
-                availableFormats: makeFormatSet(dvdFormat, nextDay(availableFrom, 8)),
+                availableFormats: makeFormatSet(instantOnly, nextDay(availableFrom, 8)),
                 boxArtLargeUrl: "http://cdn-5.nflximg.com/us/boxshots/large/999095.jpg")
         videos += new Video(title: "The Witches",
                 netflixId: "http://api.netflix.com/catalog/titles/movies/20282991",
-                availableFormats: makeFormatSet(instantFormat, nextDay(availableFrom, 9)),
+                availableFormats: makeFormatSet(dvdAndBluray, nextDay(availableFrom, 9)),
                 boxArtLargeUrl: "http://cdn-1.nflximg.com/us/boxshots/large/20282991.jpg")
 
         videos*.save()
@@ -98,10 +102,11 @@ class BootStrap {
     def destroy = {
     }
 
-
-    def makeFormatSet(format, availableFrom) {
+    def makeFormatSet(formats, availableFrom) {
         def set = new HashSet()
-        set += makeFormat(format, availableFrom, AvailableFormat.LastAvailableUntil)
+        formats.each { format ->
+            set += makeFormat(format, availableFrom, AvailableFormat.LastAvailableUntil)
+        }
         return set
     }
 

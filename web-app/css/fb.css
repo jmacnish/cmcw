@@ -149,20 +149,35 @@ button.link:focus span {
 }
 
 div#row_container {
-  width: 700px;      // <-- images will be evenly distributed across
-                     //     this width
-  margin: auto;
-  background-repeat: no-repeat;
+    width: 700px;
 }
 
 div#image_container {
-  width: 25%;
+    width: 25%;
 }
 
 .site_img_sz {
     width: 120px;
     height: 150px;
     background-repeat: no-repeat;
+    position: relative;
+}
+
+.site_img_sz span {
+    width: 24px;
+    height: 24px;
+    display: block;
+    position: absolute;
+    top: -12px;
+    left: 90px;
+}
+
+.watch {
+    background: url(../images/Thumb-up.png) no-repeat;
+}
+
+.miss {
+    background: url(../images/Thumb-down.png) no-repeat;
 }
 
 .pos-left {
@@ -178,3 +193,12 @@ div#image_container {
     margin-left: 50%;
     margin-top: -100px;
 }
+
+/*
+.photo {
+    margin: 30px;
+    position: relative;
+    width: 180px;
+    height: 130px;
+}
+*/

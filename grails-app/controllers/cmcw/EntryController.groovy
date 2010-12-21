@@ -13,51 +13,68 @@ class EntryController {
     def index = {
         log.debug("params=" + params)
 
+        // Which formats to show
+        def displayFormats = Format.findAll()
+        def displayFormatIds = []
+        displayFormats.each {
+            displayFormatIds += it.id
+        }
+
         // Get movies from 4 days ago until 2 days from now.
         def startOfPeriod = getStartOfAdjustedDay(new Date(), -4)
         def endOfPeriod = getStartOfAdjustedDay(new Date(), 2)
 
-        /*
-        * Call the search API to get list of videos back
-        */
-        def serverURL = grailsApplication.config.grails.serverURL // API URL
-        def uri = serverURL + "/catalog/search?availableAfter={availableAfter}&availableUpto={availableUpto}&videoType={videoType}&count=50&format=json"
-        def restTemplate = new RestTemplate()
-        def vars = [
-                'availableAfter': Long.toString(dateToEpoch(startOfPeriod)),
-                'availableUpto': Long.toString(dateToEpoch(endOfPeriod)),
-                'videoType': 'movies'
-        ]
-        def result = restTemplate.getForObject(uri, String.class, vars)
-        log.debug("Result=" + result)
-        def videosMaps = JSON.parse(result)
-        def videos = []
-        videosMaps.each {
-            videos += new Video(title: it.title,
-                    netflixId: it.netflixId,
-                    availableFrom: safeParseDate(it.availableFrom),
-                    availableUntil: safeParseDate(it.availableUntil),
-                    boxArtLargeUrl: it.boxArtLargeUrl
-            )
+        // Show only movies.
+        def videoType = 'movies'
+
+        // Start at beginning, show 50.
+        def start = 0
+        def count = 50
+
+        // Exposing an API is cool but...we don't need to do it.
+        def c = Video.createCriteria()
+        def videos = c.listDistinct {
+            and {
+                availableFormats {
+                    ge('availableFrom', startOfPeriod)
+                    lt('availableFrom', endOfPeriod)
+                    format {
+                        'in'("id", displayFormatIds)
+                    }
+                    order('availableFrom', 'desc')
+                }
+                like("netflixId", '%' + videoType + '%')
+            }
+            firstResult(start)
+            maxResults(count)
         }
 
-        /*
-         * Assemble them into daily buckets
-         */
+        // Add boxshots or anything else we want to have for a "full" video
+        catalogService.augment videos
+
+        log.debug("Vidoes=" + videos)
+
+        // Assemble them into daily buckets
+        def comp = [
+                compare: {a,b-> a.availableFrom.compareTo(b.availableFrom) }
+        ] as Comparator
 
         def videosByDay = [:]
         def days = []
-        videos.each {
-            def day = getStartOfDay(it.availableFrom)
+        videos.each { video ->
+            def availableFormats = new ArrayList(video.availableFormats)
+            Collections.sort(availableFormats, comp)
+            def availableFormat = availableFormats.first()
+            def day = getStartOfDay(availableFormat.availableFrom)
             if (videosByDay.containsKey(day) == false) {
                 days += day
-                videosByDay[day] = []
+                videosByDay[day] = [] // make a list of videos for each day.
             }
+            videosByDay[day] += video
         }
-        videos.each {
-            def day = getStartOfDay(it.availableFrom)
-            videosByDay[day] += it
-        }
+
+        // May be somewhat sorted order from DB, but could get mixed up with different formats
+        Collections.sort(days)
 
         [params: params, videos: videos, startOfPeriod: startOfPeriod, endOfPeriod: endOfPeriod, days: days, videosByDay: videosByDay]
     }
@@ -143,3 +160,30 @@ class EntryController {
     }
 
 }
+
+
+/*
+* Call the search API to get list of videos back
+*/
+/*
+        def serverURL = grailsApplication.config.grails.serverURL // API URL
+        def uri = serverURL + "/catalog/search?availableAfter={availableAfter}&availableUpto={availableUpto}&videoType={videoType}&count=50&format=json"
+        def restTemplate = new RestTemplate()
+        def vars = [
+                'availableAfter': Long.toString(dateToEpoch(startOfPeriod)),
+                'availableUpto': Long.toString(dateToEpoch(endOfPeriod)),
+                'videoType': 'movies'
+        ]
+        def result = restTemplate.getForObject(uri, String.class, vars)
+        log.debug("Result=" + result)
+        def videosMaps = JSON.parse(result)
+        def videos = []
+        videosMaps.each {
+            videos += new Video(title: it.title,
+                    netflixId: it.netflixId,
+                    availableFrom: safeParseDate(it.availableFrom),
+                    availableUntil: safeParseDate(it.availableUntil),
+                    boxArtLargeUrl: it.boxArtLargeUrl
+            )
+        }
+*/

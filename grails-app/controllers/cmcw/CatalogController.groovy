@@ -32,7 +32,6 @@ class CatalogController {
             }
             firstResult(isInteger(params, 'start', 0))
             maxResults(isInteger(params, 'count', 10))
-
         }
 
         // Add boxshots or anything else we want to have for a "full" video

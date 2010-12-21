@@ -11,36 +11,159 @@
 <div id="fb-root"></div>
 <script src="http://connect.facebook.net/en_US/all.js" type="text/javascript"></script>
 <script type="text/javascript">
-  FB.init({
-    appId       : '164406616931287',
-    status      : true, // check login status
-    cookie      : true, // enable cookies to allow the server to access the session
-    xfbml       : true,  // parse XFBML
-    channelUrl  : 'http://ideaforge.dlinkddns.com/cmcw/channel.html'  // custom channel
-  });
-  FB.Canvas.setAutoResize(100);
-  FB.getLoginStatus(function(response) {
-    if (response.session) {
-      $("#logged-in-status").html(
-              "You're logged in"
-              );
-    } else {
-      $("#logged-in-status").html(
-              "Not logged in"
-              );
-    }
-  });
-  // Binding functions & whatnot
-  $(document).ready(function() {
-    var enableFB = true;
+  /*
+   * Scripting for entry page.
+   */
 
-    // stop normal submit clicks.
+  // If true, enables all Facebook APIs.  If false, suppresses all FB calls.
+  var enableFB = true;
+
+  // Some basics
+  var colors = new Object();
+  colors[true] = "#1E2D4D";
+  colors[false] = "#3b5998";
+
+  if (enableFB) {
+    // Initialize FB API.
+
+    FB.init({
+      appId       : '164406616931287',
+      status      : true, // check login status
+      cookie      : true, // enable cookies to allow the server to access the session
+      xfbml       : true,  // parse XFBML
+      channelUrl  : 'http://ideaforge.dlinkddns.com/cmcw/channel.html'  // custom channel
+    });
+    FB.Canvas.setAutoResize(100);
+    FB.getLoginStatus(function(response) {
+      if (response.session) {
+        $("#logged-in-status").html(
+                "You're logged in"
+                );
+      } else {
+        $("#logged-in-status").html(
+                "Not logged in"
+                );
+      }
+    });
+  }
+
+  /**
+   * Turns on a button (either a watch or miss button)
+   * @param button A jquery button node that we'll disable
+   * @param selected True if button is enabled, false otherwise.
+   */
+  function setButton(button, selected) {
+    $(button).find("span").css("color", colors[selected]);
+    if (selected) {
+      $(button).attr("selected","true");
+    } else {
+      $(button).removeAttr("selected");
+    }
+  }
+
+  /**
+   * Returns the selected status of a video
+   * @param video A JQuery node to check video status on
+   * @return 0: No choice.  -1: miss  1: watch
+   */
+  function videoState(video) {
+    var watchActive = ($(video).find('[action="watch"]').filter('[selected="true"]').length > 0) ? true : false;
+    var missActive = ($(video).find('[action="miss"]').filter('[selected="true"]').length > 0) ? true : false;
+    if (watchActive == true && missActive == false) {
+      return 1;
+    } else if (watchActive == false && missActive == true) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  /**
+   * Rotate the state through the various options
+   * @param state The state to toggle, 0: no choice -1: miss 1: watch
+   */
+  function toggleState(state) {
+    var newState = 0;
+    if (state == 0) {
+      newState = 1;
+    } else if (state == 1) {
+      newState = -1;
+    }
+    return newState;
+  }
+
+  /**
+   * Half toggles a button (if watch button, 0 -> 1 -> 0, if miss button 0 -> -1 -> 0
+   * @param state The current state of a button
+   * @param isWatch True if this is a watch button, false if a miss button
+   */
+  function toggleHalfState(state, isWatch) {
+    if (isWatch) {
+      if (state == 1) {
+        return 0;
+      } else {
+        return 1;
+      }
+    } else {
+      if (state == -1) {
+        return 0;
+      } else {
+        return -1;
+      }
+    }
+  }
+
+  /**
+   * Sets the video absolutely to the given state
+   * @param video A jquery video node to set the status for
+   * @param state The state to set the video to: -1, 0, 1
+   */
+  function setVideo(video, state) {
+    var watchActive = false;
+    var missActive = false;
+    if (state == 1) {
+      watchActive = true;
+    } else if (state == -1) {
+      missActive = true;
+    }
+    setButton($(video).find('[action="watch"]'), watchActive);
+    setButton($(video).find('[action="miss"]'), missActive);
+    var imgContainer = $(video).parent().find('[category="img"]');
+    if (state == 1) {
+      $(imgContainer).removeClass("miss");
+      $(imgContainer).addClass("watch");
+    } else if (state == -1) {
+      $(imgContainer).removeClass("watch");
+      $(imgContainer).addClass("miss");
+    } else {
+      $(imgContainer).removeClass("watch");
+      $(imgContainer).removeClass("miss");
+    }
+  }
+
+  /*
+   * Given a jquery selection of a category=video node, change the selected status from Nothing -> Watch -> Miss -> Nothing
+   * @param video A jquery video node to toggle it's button's selected status.
+   */
+  function toggle(video) {
+    setVideo(video, toggleState(videoState(video)));
+  }
+
+  // Bind all the functions on document ready.
+  $(document).ready(function() {
+
+    // Stop normal form submit clicks.
     $('button[category=selection]').bind('click', function(event) {
       event.preventDefault(); // prevents the form from being submitted
-      $(this).parent().find("button").css("color", "#3b5998");
-      $(this).parent().find("button").attr("selected","false");
-      $(this).css("color", "#1E2D4D");
-      $(this).attr("selected","true");
+      var video = $(this).parent();
+      var isWatchButton = ($(this).attr("action") == "watch") ? true : false;
+      var state = videoState(video);
+      setVideo(video, toggleHalfState(state, isWatchButton));
+    });
+
+    $('[action=toggle]').bind('click', function(event) {
+      var video = $(this).parent().parent().parent().parent().find('[category="video"]');
+      toggle(video);
     });
 
     // submit to wall
@@ -120,7 +243,9 @@
   </div>
 
   <p>
-  <h4>New movies to watch from <g:formatDate format="EEEE, MMMM d" date="${startOfPeriod}"/> to <g:formatDate format="EEEE, MMMM d" date="${endOfPeriod}"/></h4>
+  <h4>
+    New movies to watch from <g:formatDate format="EEEE, MMMM d" date="${startOfPeriod}"/> to <g:formatDate format="EEEE, MMMM d" date="${endOfPeriod}"/>
+  </h4>
 </p>
 
   <form id="submission" action="#" method="get">
@@ -139,13 +264,14 @@
         <g:each in="${videosByDay[d]}" var="v">
           <div class="float">
             <div id="image_container" class="site_img_sz pos-left">
-              <a  href="${v.getRealURL()}" title="${v.title}" >
-                <div class="site_img_sz"><img src="${v.boxArtLargeUrl}" width="110" height="150"/></div>
-              </a>
+              <div class="site_img_sz">
+                <span category="img"></span>
+                <img src="${v.boxArtLargeUrl}" action="toggle" width="110" height="150"/>
+              </div>
             </div>
-            <p><B>${v.title}</B></br>
-              <button type="submit" class="link" category="selection"><span>watch</span></button>
-              <button type="submit" class="link" category="selection"><span>miss</span></button>
+            <p category="video"><B>${v.title}</B><br/>
+              <button type="submit" class="link" category="selection" action="watch"><span>watch</span></button>
+              <button type="submit" class="link" category="selection" action="miss"><span>miss</span></button>
             </p>
           </div>
         </g:each>
