@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e96b30f0-f106-4596-bda0-f0f9c2d6d7d6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/cmcw/AvailableFormat.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/grails-app/domain/cmcw/Format.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/cmcw/AvailableFormatTests.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/unit/cmcw/FormatTests.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" afterPath="$PROJECT_DIR$/grails-app/conf/BootStrap.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/cmcw/CatalogController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/cmcw/EntryController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/cmcw/ImportController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/cmcw/CatalogImport.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/cmcw/CatalogImport.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/cmcw/Video.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/cmcw/Video.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/cmcw/CatalogService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/cmcw/CatalogService.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/cmcw/RecordsHandler.groovy" afterPath="$PROJECT_DIR$/grails-app/services/cmcw/RecordsHandler.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/services/cmcw/ShadowService.groovy" afterPath="$PROJECT_DIR$/grails-app/services/cmcw/ShadowService.groovy" />
     </list>
     <ignored path="cmcw.iws" />
     <ignored path=".idea/workspace.xml" />
